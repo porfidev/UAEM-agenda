@@ -1,60 +1,105 @@
 body {
-	background-image: url(imagenes/fondo_body.jpg);
-	background-color: #0F3D3C;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: .8em;
-	color: #7E7A5F;
+  background-image: url(imagenes/fondo_body.jpg);
+  background-color: #0F3D3C;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: .8em;
+  color: #7E7A5F;
 }
+
 #contenedor {
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
+
 #contenido {
-	background-image: url(imagenes/fondo_contenido.jpg);
-	background-repeat: repeat-y;
-	width: 610px;
-	margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-image: url(imagenes/fondo_contenido.jpg);
+  background-repeat: repeat-y;
+  width: 610px;
+  margin: auto;
 }
+
 #login {
-	background-image: url(imagenes/fondo_login.jpg);
-	background-repeat: no-repeat;
-	width: 377px;
-	height: 164px;
-	margin: auto;
+  background-image: url(imagenes/fondo_login.jpg);
+  background-repeat: no-repeat;
+  width: 377px;
+  height: 164px;
+  margin: auto;
 }
+
 .campologin {
-	background-image: url(imagenes/fondo_inputtext.jpg);
-	height: 30px;
-	width: 168px;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	color: #67644D;
-	font-size: 1.2em;
-	border: 1px solid #A7A37E;
-	padding-left: 10px;
+  background-image: url(imagenes/fondo_inputtext.jpg);
+  height: 30px;
+  width: 168px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #67644D;
+  font-size: 1.2em;
+  border: 1px solid #A7A37E;
+  padding-left: 10px;
 }
+
 #header {
-	background-image: url(imagenes/fondo_header.jpg);
-	background-repeat: no-repeat;
-	background-position: left;
-	height: 108px;
-	width: 610px;
-	margin: auto;
+  background-image: url(imagenes/fondo_header.jpg);
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 108px;
+  width: 610px;
+  margin: auto;
 }
+
 #datosusuario {
-	text-align: left;
-	margin-left: 120px;
-	padding-top: 2px;
+  text-align: left;
+  margin-left: 120px;
+  padding-top: 2px;
 }
+
 .texto {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 10px;
-	color: #04637F;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10px;
+  color: #04637F;
 }
-.botonalpha{
-	height: 30px;
-	width: 150px;
-	margin-top: 6px;
+
+.botonalpha {
+  height: 30px;
+  width: 150px;
+  margin-top: 6px;
 }
-</style>
+
+.contacto {
+  margin: 10px 30px;
+}
+
+.contacto table {
+  width: 100%;
+}
+
+.contacto table tbody tr td:first-child {
+  text-align: left;
+  width: 60%;
+}
+
+.contacto table tbody tr td button {
+  border: 2px solid #BEC3C7;
+  border-radius: 6px;
+  padding: 4px 20px;
+  background-color: #ececec;
+}
+
+.contacto table tbody tr td button:hover {
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 4px 20px;
+  color: white;
+  background-color: #BEC3C7;
+  cursor: pointer;
+}
+
+
+.contacto table tbody tr:hover {
+  background-color: #b9b58f;
+  color: white;
+  font-weight: bold;
+}

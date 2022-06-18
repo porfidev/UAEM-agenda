@@ -1,63 +1,32 @@
 <?php
 session_start();
-//include("config.php");
 
 $usuario = $_POST["usuario"];
 $contrasena = $_POST["contra"];
-$conexion=mysql_connect("localhost","root")or
- die("Problemas en la conexion");
-mysql_select_db("agenda",$conexion) or
- die("Problemas en la seleccion de la base de datos");
-$registros=mysql_query("SELECT * FROM usuarios_bd WHERE nombre = '$usuario' AND pass ='$contrasena'",
-           $conexion)or die("Problemas en el select:".mysql_error());
-if (mysql_num_rows($registros) == 0) {
-   echo "El usuario y/o contraseña no existen, favor de registrarse";
-    exit;
-}
-/*$consulta = "SELECT * FROM usuarios_bd WHERE nombre = '$usuario' AND pass ='$contrasena'";
-$revision = mysql_query($consulta,$acceso);
 
-if(!$revision)
-	echo mysql_error();
-	
-if (mysql_num_rows($revision) == 0) {
-    echo "El usuario y/o contraseña no existen, favor de registrarse";
-    exit;
-}*/
+$conexion = mysqli_connect("localhost", "porfidev", "X36repentance") or
+die("Problemas en la conexion");
+mysqli_select_db($conexion, "agenda_proyecto") or
+die("Problemas en la seleccion de la base de datos");
 
-/*while ($fila = mysql_fetch_assoc($regitros)) 
-{
-	if ($fila["tipo"] == "admin")
-	{
-		$_SESSION['usuario_activo'] = $fila["nombre"];
-		$_SESSION['autorizado'] = "si";
-		$_SESSION['tipo_usuario'] = $fila["tipo"];
-		Header("Location: administrador.php");
-	}
-	else
-	{
-		$_SESSION['usuario_activo'] = $fila["nombre"];
-		$_SESSION['autorizado'] = "si";
-		$_SESSION['tipo_usuario'] = $fila["tipo"];
-		Header("Location: administrador.php");
-	}
-}*/
-while ($reg=mysql_fetch_array($registros))
-{
-if ($reg["tipo"] == "admin")
-	{
-		$_SESSION['usuario_activo'] = $reg["nombre"];
-		$_SESSION['autorizado'] = "si";
-		$_SESSION['tipo_usuario'] = $reg["tipo"];
-		Header("Location: administrador.php");
-	}
-	else
-	{
-		$_SESSION['usuario_activo'] = $reg["nombre"];
-		$_SESSION['autorizado'] = "si";
-		$_SESSION['tipo_usuario'] = $reg["tipo"];
-		Header("Location: administrador.php");
-	}
+$registros = mysqli_query($conexion, "SELECT * FROM usuarios_bd WHERE nombre = '$usuario' AND pass ='$contrasena'") or
+die("Problemas en el select:" . mysqli_error($conexion));
+if (mysqli_num_rows($registros) == 0) {
+  echo "El usuario y/o contraseña no existen, favor de registrarse";
+  exit;
 }
-mysql_close($conexion);
-?>
+
+while ($reg = mysqli_fetch_array($registros)) {
+  if ($reg["tipo"] == "admin") {
+    $_SESSION['usuario_activo'] = $reg["nombre"];
+    $_SESSION['autorizado'] = "si";
+    $_SESSION['tipo_usuario'] = $reg["tipo"];
+    Header("Location: administrador.php");
+  } else {
+    $_SESSION['usuario_activo'] = $reg["nombre"];
+    $_SESSION['autorizado'] = "si";
+    $_SESSION['tipo_usuario'] = $reg["tipo"];
+    Header("Location: administrador.php");
+  }
+}
+mysqli_close($conexion);
