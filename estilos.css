@@ -1,0 +1,60 @@
+body {
+	background-image: url(imagenes/fondo_body.jpg);
+	background-color: #0F3D3C;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: .8em;
+	color: #7E7A5F;
+}
+#contenedor {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+#contenido {
+	background-image: url(imagenes/fondo_contenido.jpg);
+	background-repeat: repeat-y;
+	width: 610px;
+	margin: auto;
+}
+#login {
+	background-image: url(imagenes/fondo_login.jpg);
+	background-repeat: no-repeat;
+	width: 377px;
+	height: 164px;
+	margin: auto;
+}
+.campologin {
+	background-image: url(imagenes/fondo_inputtext.jpg);
+	height: 30px;
+	width: 168px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #67644D;
+	font-size: 1.2em;
+	border: 1px solid #A7A37E;
+	padding-left: 10px;
+}
+#header {
+	background-image: url(imagenes/fondo_header.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 108px;
+	width: 610px;
+	margin: auto;
+}
+#datosusuario {
+	text-align: left;
+	margin-left: 120px;
+	padding-top: 2px;
+}
+.texto {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #04637F;
+}
+.botonalpha{
+	height: 30px;
+	width: 150px;
+	margin-top: 6px;
+}
+</style>
