@@ -95,7 +95,7 @@ require_once("utils/ConexionBBDD.php");
 
       while ($profesion = mysqli_fetch_assoc($profesiones)) {
         $optionsProfesiones .= <<<HTML
-          <option>$profesion[nombre]</option>
+          <option value='$profesion[id]'>$profesion[nombre]</option>
         HTML;
       }
       ?>
@@ -144,7 +144,7 @@ require_once("utils/ConexionBBDD.php");
           </tr>
           <tr>
             <td colspan="2" align="center">
-              <label>Profesion(es):</label>
+              <label>Profesion:</label>
               <select id='selectProfession' class='botonalpha'>
                 <?php echo $optionsProfesiones ?>
                 <option value='addNew'>Agregar nueva</option>
