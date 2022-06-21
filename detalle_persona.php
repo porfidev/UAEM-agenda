@@ -27,7 +27,7 @@ var_dump($_POST);
     $con3 = "SELECT * FROM domicilio_par where cod_part='$requestId'";
     $con4 = "SELECT * FROM telefono WHERE cod_telefono='$requestId'";
     $con5 = "SELECT * FROM representante where cod_per='$requestId'";
-    $con6 = "SELECT * FROM profecion where cod_pro='$requestId'";
+    $con6 = "SELECT * FROM profesiones where cod_pro='$requestId'";
     $con7 = "SELECT * FROM club where cod_club='$requestId'";
     $con8 = "SELECT * FROM depedencia where cod_depencia='$requestId'";
     $con13 = "SELECT * FROM cargo where id_cargo='$requestId'";

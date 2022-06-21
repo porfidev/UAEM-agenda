@@ -23,7 +23,7 @@ $html = <<<HTML
         <a href="contactos.php" target="mainFrame">
           <img src="imagenes/boton_consultar.jpg" width="157" height="40" border="0"/>
         </a>
-        <a href="1pro.php" target="mainFrame">
+        <a href="agregar_contacto.php" target="mainFrame">
           <img alt="agregar" src="imagenes/boton_agregar.jpg" width="157" height="40"border="0"/>
         </a>
         <a href="logout.php" target="_parent">
