@@ -17,6 +17,7 @@ class ConexionBBDD
     $this->baseDeDatos = "agenda_proyecto";
 
     $this->conexion = mysqli_connect($this->servidor, $this->usuario, $this->contrasena);
+    mysqli_select_db($this->conexion, $this->baseDeDatos);
   }
 
   public static function getInstance()

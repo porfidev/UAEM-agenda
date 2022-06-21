@@ -91,7 +91,7 @@ require_once("utils/ConexionBBDD.php");
       $conexion = ConexionBBDD::getInstance()->getConnection();
       $sql = 'SELECT * FROM agenda_proyecto.profesiones';
       $profesiones = mysqli_query($conexion, $sql);
-      $optionsProfesiones = '<option value="">-- seleccione una opción</option>';
+      $optionsProfesiones = '<option value="" selected>-- seleccione una opción --</option>';
 
       while ($profesion = mysqli_fetch_assoc($profesiones)) {
         $optionsProfesiones .= <<<HTML
@@ -144,11 +144,10 @@ require_once("utils/ConexionBBDD.php");
           </tr>
           <tr>
             <td colspan="2" align="center">
-              <input id="addProfession" name="button2" type="button" class="botonalpha"
-                     value="Agregar Profesi&oacute;n" />
-
-              <select>
+              <label>Profesion(es):</label>
+              <select id='selectProfession' class='botonalpha'>
                 <?php echo $optionsProfesiones ?>
+                <option value='addNew'>Agregar nueva</option>
               </select>
             </td>
             <td colspan="2" align="center"><input name="domicilio" type="button" class="botonalpha"
@@ -340,18 +339,24 @@ require_once("utils/ConexionBBDD.php");
     </div>
     <form action='agregarProfesion.php'>
       <label for='name'>Ingrese nueva profesión</label>
-      <input name="name" type='text'>
+      <input name="name" type='text' required>
       <button type='submit'>Agregar</button>
     </form>
+    <div id='result'></div>
   </div>
 </div>
 
 <script type='text/javascript'>
   const modalProfession = document.getElementById('addProfessionModal');
-  const professionButton = document.getElementById('addProfession');
+  const professionSelect = document.getElementById('selectProfession');
 
-  professionButton.addEventListener('click', function() {
-    modalProfession.style.display = 'block';
+  professionSelect.addEventListener('change', function(event) {
+    if(event.target.value === 'addNew'){
+      modalProfession.style.display = 'block';
+      modalProfession.querySelector("form").style.display = 'block';
+      modalProfession.querySelector("form").reset();
+      modalProfession.querySelector("#result").innerHTML = '';
+    }
   });
 
   const closeButton = modalProfession.querySelector('.close');
@@ -362,8 +367,27 @@ require_once("utils/ConexionBBDD.php");
   const formProfession = modalProfession.querySelector('form');
   formProfession.addEventListener('submit', function addProfession(event) {
     event.preventDefault();
-    console.log('aqui se pone lo bueno', event.target);
+
+    const formData = new FormData(event.target);
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      console.log(this.responseText, this.status);
+      const response = JSON.parse(this.responseText);
+
+      if(this.status === 200){
+        modalProfession.querySelector("form").style.display = 'none';
+        addOptionToSelect(professionSelect, response.id, formData.get('name'));
+      }
+      modalProfession.querySelector("#result").innerHTML = response.message;
+    }
+    xhttp.open('POST', 'agregarProfesion.php', true);
+    xhttp.send(formData);
   });
+
+  function addOptionToSelect(select, value, text) {
+    select.add(new Option(text, value), 1);
+    select.value = value;
+  }
 
 </script>
 </body>

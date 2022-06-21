@@ -8,5 +8,5 @@ mysql_select_db("agenda",$conexion) or
 mysql_query("insert into  profecion(cod_pro,profecion)values('$_SESSION[a]','$_REQUEST[profesion]')",$conexion)
   or die("Problemas en el select".mysql_error());
 mysql_close($conexion);
-Header("Location: 2pro.php");
+Header("Location: agregarProfesion.php");
 ?>
